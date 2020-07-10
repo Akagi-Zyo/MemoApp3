@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import CircleButton from "../elements/CircleButton";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 class MemoEditScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <TextInput style={styles.memoEditInput} multiline />
-
-        <CircleButton name={"check"} />
+        <CircleButton name={"check"} onPress={()=>{this.props.navigation.goBack()}} />
       </View>
     );
   }

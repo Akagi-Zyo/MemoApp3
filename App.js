@@ -11,16 +11,18 @@ import SignupScreen from "./src/screens/SignupScreen";
 // のようにしていましたが、パッケージが分離されたため、それぞれ個別で読み込む必要があります。
 const App = createStackNavigator(
   {
+    Login: { screen: LoginScreen },
+    Signup: { screen: SignupScreen },
     HOME: { screen: MemoListScreen },
     MemoDetail: { screen: MemoDetailScreen },
     MemoEdit: { screen: MemoEditScreen },
-    Login: { screen: LoginScreen },
-    Signup: { screen: SignupScreen },
   },
 
   {
     defaultNavigationOptions: {
       headerTitle: "Memot",
+      headerTintColor: "#fff",
+      headerBackTitle: null,
       headerStyle: {
         backgroundColor: "#265366",
       },

@@ -18,6 +18,7 @@ class LoginScreen extends React.Component {
           style={styles.button}
           onPress={() => {}}
           underlayColor="#70F66"
+          onPress={()=>{this.props.navigation.navigate('HOME');}}
         >
           <Text style={styles.buttonTitle}>ログインする</Text>
         </TouchableHighlight>

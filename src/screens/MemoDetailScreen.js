@@ -21,8 +21,13 @@ class MemoDatailScreen extends React.Component {
           </Text>
         </View>
 
-        <CircleButton color="white" style={styles.editButton} name={'pencil'} 
-        onPress={()=>{this.props.navigation.navigate('MemoEdit');}}
+        <CircleButton
+          color="white"
+          style={styles.editButton}
+          name={"pencil"}
+          onPress={() => {
+            this.props.navigation.navigate("MemoEdit");
+          }}
         />
       </View>
     );
