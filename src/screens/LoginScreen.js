@@ -13,6 +13,10 @@ class LoginScreen extends React.Component {
     password: "",
   };
 
+  handleSubmit() {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -43,7 +47,7 @@ class LoginScreen extends React.Component {
           onPress={() => {}}
           underlayColor="#70F66"
           onPress={() => {
-            this.props.navigation.navigate("HOME");
+            this.handleSubmit.bind(this);
           }}
         >
           <Text style={styles.buttonTitle}>ログインする</Text>
