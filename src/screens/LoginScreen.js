@@ -5,7 +5,9 @@ import {
   View,
   TextInput,
   TouchableHighlight,
+  SwitchIOS,
 } from "react-native";
+import firebase from "firebase";
 
 class LoginScreen extends React.Component {
   state = {
@@ -14,7 +16,15 @@ class LoginScreen extends React.Component {
   };
 
   handleSubmit() {
-
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then((user) => {
+        this.props.navigation.navigate("Home");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -28,7 +38,7 @@ class LoginScreen extends React.Component {
             this.setState({ email: text });
           }}
           autoCapitalize="none"
-          autoCorrect="false"
+          autoCorrect={false}
           placeholder="Email Address"
         />
         <TextInput
@@ -38,17 +48,14 @@ class LoginScreen extends React.Component {
             this.setState({ password: text });
           }}
           autoCapitalize="none"
-          autoCorrect="false"
+          autoCorrect={false}
           placeholder="Password"
           secureTextEntry
         />
+
         <TouchableHighlight
           style={styles.button}
-          onPress={() => {}}
-          underlayColor="#70F66"
-          onPress={() => {
-            this.handleSubmit.bind(this);
-          }}
+          onPress={this.handleSubmit.bind(this)}
         >
           <Text style={styles.buttonTitle}>ログインする</Text>
         </TouchableHighlight>

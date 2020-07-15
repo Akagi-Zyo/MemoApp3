@@ -1,15 +1,34 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, SwitchIOS } from "react-native";
 import MemoList from "../components/MemoList";
 import CircleButton from "../elements/CircleButton";
+import firebase from 'firebase';
 
-class MemoListScreen extends React.Component {  render() {
+//this.props.navigation.navigate("MemoEdit")
+
+class MemoListScreen extends React.Component {
+  handlePress() {
+  const db = firebase.firestore();
+  
+  db.collection(`users/${user}/memos`)
+    .add({
+      body: "text memo",
+      createdOn: "2020-7-15",
+    })
+    .then((docRef) => {
+      console.log(docRef.id);
+    })
+    .catch((error) => {
+      console.log(error);
+    }); 
+  }
+  
+
+  render() {
     return (
       <View style={styles.container}>
         <MemoList navigation={this.props.navigation} />
-    <CircleButton name='plus' onPress={()=>{
-      this.props.navigation.navigate("MemoEdit");
-    }} />
+        <CircleButton name="plus" onPress={this.handlePress.bind(this)} />
       </View>
     );
   }

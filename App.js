@@ -7,10 +7,12 @@ import MemoEditScreen from './src/screens/MemoEditScreen'
 import LoginScreen from './src/screens/LoginScreen'
 import SignupScreen from "./src/screens/SignupScreen";
 import * as firebase from "firebase";
-// 3.x 系では、
-// import { createAppContainer, createStackNavigator } from 'react-navigation';
-// のようにしていましたが、パッケージが分離されたため、それぞれ個別で読み込む必要があります。
-import ENV from './env.json'
+import ENV from './env.json';
+
+// Required for side-effects
+require("firebase/firestore");
+
+
 
 const firebaseConfig = firebase.initializeApp({
   apiKey: ENV.FIREBASE_API_KEY,
@@ -28,7 +30,7 @@ const App = createStackNavigator(
   {
     Login: { screen: LoginScreen },
     Signup: { screen: SignupScreen },
-    HOME: { screen: MemoListScreen },
+    Home: { screen: MemoListScreen },
     MemoDetail: { screen: MemoDetailScreen },
     MemoEdit: { screen: MemoEditScreen },
   },
