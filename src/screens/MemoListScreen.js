@@ -9,8 +9,7 @@ import firebase from 'firebase';
 class MemoListScreen extends React.Component {
   handlePress() {
   const db = firebase.firestore();
-  
-  db.collection(`users/${user}/memos`)
+  db.collection("memos")
     .add({
       body: "text memo",
       createdOn: "2020-7-15",
@@ -28,7 +27,9 @@ class MemoListScreen extends React.Component {
     return (
       <View style={styles.container}>
         <MemoList navigation={this.props.navigation} />
-        <CircleButton name="plus" onPress={this.handlePress.bind(this)} />
+        <CircleButton name="plus" onPress={this.handlePress.bind(this)}>
+          {"\uf067"}
+        </CircleButton>
       </View>
     );
   }
