@@ -8,20 +8,11 @@ import firebase from 'firebase';
 
 class MemoListScreen extends React.Component {
   handlePress() {
-  const db = firebase.firestore();
-  db.collection("memos")
-    .add({
-      body: "text memo",
-      createdOn: "2020-7-15",
-    })
-    .then((docRef) => {
-      console.log(docRef.id);
-    })
-    .catch((error) => {
-      console.log(error);
-    }); 
+    const { params } = this.props.navigation.state;
+    this.props.navigation.navigate("MemoCreate", {
+      currentUser: params.currentUser,
+    });
   }
-  
 
   render() {
     return (

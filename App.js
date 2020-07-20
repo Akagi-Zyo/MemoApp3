@@ -8,6 +8,7 @@ import LoginScreen from './src/screens/LoginScreen'
 import SignupScreen from "./src/screens/SignupScreen";
 import * as firebase from "firebase";
 import ENV from './env.json';
+import MemoCreateScreen from "./src/screens/MemoCreateScreen";
 // Required for side-effects
 require("firebase/firestore");
 
@@ -32,6 +33,7 @@ const App = createStackNavigator(
     Home: { screen: MemoListScreen },
     MemoDetail: { screen: MemoDetailScreen },
     MemoEdit: { screen: MemoEditScreen },
+    MemoCreate: { screen: MemoCreateScreen },
   },
 
   {
